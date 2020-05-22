@@ -57,7 +57,7 @@
 
       <!-- Nav Item - My CV -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="<?= base_url('admin/listCV'); ?>">
           <i class="far fa-fw fa-eye"></i>
           <span>List Students CV</span></a>
       </li>

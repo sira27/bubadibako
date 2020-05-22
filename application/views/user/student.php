@@ -66,7 +66,7 @@
   </div>
   <div class="form-group row">
     <div align="right">
-      <button type="submit" class="btn btn-primary" name="btnSubmit">Submit Achievement</button>
+      <button type="submit" class="btn btn-primary" name="btnSubmit">Submit Student</button>
     </div>
   </div>
 </form>
