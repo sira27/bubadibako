@@ -15,9 +15,12 @@ class Admin extends CI_Controller {
 		$data['title'] = 'Admin';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
+		$this->load->model('dashboard_admin');
+		$data['row'] = $this->dashboard_admin->get();
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('admin/index', $data);
-    	$this->load->view('templates/footer');
+		$this->load->view('templates/footer');
 	}
 
 	public function myProfile()

@@ -141,16 +141,76 @@
 
 
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<section class="content">
+  <div class="container-fluid">
 
-  <!-- Page Heading -->
-  <h1 class="h3 mb-4 text-gray-800">Head of Study Program Dashboard</h1>
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">Head of Study Program Dashboard</h1>
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Data Users</h3>
+        <div class="pull-right">
+          <a href="#" class="btn btn-primary btn-flat">
+            <i class="fa fa-user-plus"></i>
+          </a>
+        </div>
+      </div>
+      <div class="box-body table-resposive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Date Created</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            $no = 1;
+            foreach($row->result() as $key => $data) { ?>
+            <tr>
+              <td><?=$no++?>.</td>
+              <td><?=$data->name?></td>
+              <td><?=$data->email?></td>
+              <td><?php
+              switch($data->role_id) {
+                case 1:
+                  echo "Admin";
+                  break;
+                case 2:
+                  echo "Advisor";
+                  break;
+                case 3:
+                  echo "Student";
+                  break;
+                default:
+                  echo "Null";
+                  break;
+              }
+              ?></td>
+              <td><?= date('d F Y', $data->date_created) ?></td>
+              <td class="text-center">
+                <a href="#" class="btn btn-warning btn-xs">
+                  <i class="fas fa-fw fa-edit"></i>
+                </a>
+                <a href="#" class="btn btn-danger btn-xs">
+                  <i class="far fa-fw fa-trash-alt"></i>
+                </a>
+              </td>
+            </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
- 
 
-</div>
-<!-- /.container-fluid -->
-
+  </div>
+  <!-- /.container-fluid -->
+</section>
 </div>
 <!-- End of Main Content -->
 
