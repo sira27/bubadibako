@@ -1,5 +1,5 @@
 <h1 class="h3 mb-4 mt-4 text-gray-800">Student</h1>
-<form action="" method="post">
+<form action="<?=site_url('user/add_create_cv')?>" method="post">
   <div class="form-group row">
     <label for="nim" class="col-sm-2 col-form-label">NIM</label>
     <div class="col-sm-10">
@@ -34,11 +34,11 @@
     <label for="agama" class="col-sm-2 col-form-label">Agama</label>
     <div class="col-sm-10">
       <select class="form-control" id="agama" name="agama">
-        <option value="1">Islam</option>
-        <option value="2">Kristen</option>
-        <option value="3">Hindu</option>
-        <option value="4">Buddha</option>
-        <option value="5">Kong Hu Cu</option>
+        <option value="Islam">Islam</option>
+        <option value="Kristen">Kristen</option>
+        <option value="Hindu">Hindu</option>
+        <option value="Buddha">Buddha</option>
+        <option value="Kong Hu Cu">Kong Hu Cu</option>
       </select>
     </div>
   </div>

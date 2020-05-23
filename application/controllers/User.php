@@ -138,7 +138,32 @@ class User extends CI_Controller {
 		$this->load->view('templates/header', $data);
     	$this->load->view('user/createCV', $data);
     	$this->load->view('templates/footer');
+
+
 	}
+
+	public function add_create_cv_student() 
+	{
+		$this->load->model('Student_model');
+
+		$form = array(
+			'nim'=>$this->input->post('nim'),
+			'email'=>$this->input->post('email'),
+			'name'=>$this->input->post('name'),
+			'tempat_lahir'=>$this->input->post('tempatLahir'),
+			'tanggal_lahir'=>$this->input->post('tanggalLahir'),
+			'agama'=>$this->input->post('agama'),
+			'alamat'=>$this->input->post('alamat'),
+			'deskripsi_diri'=>$this->input->post('deskripsi'),
+			'foto' => 'ganteng',
+			'status' => 0
+			);
+
+		$this->Student_model->insert_entry($form['nim'], $form['name'], $form['tempat_lahir'], $form['tanggal_lahir'],	$form['agama'], $form['status'], $form['alamat'], $form['email'], $form['deskripsi_diri'], $form['foto']);
+
+		redirect('user/createCV');
+	}
+
 
 	
 
