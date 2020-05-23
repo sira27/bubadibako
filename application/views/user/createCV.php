@@ -151,6 +151,12 @@
   <!-- Page Heading -->
   <h1 class="h3 mb-4 text-gray-800">Create Curriculum Vitae</h1>
 
+   <div class="row">
+    <div class="col-lg-6">
+      <?= $this->session->flashdata('message');  ?>
+    </div>
+  </div>
+
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
   <button type="submit" class="btn btn-info mb-2 col-sm-3" id="p" name="p" value="student">Student</a></button>
   <button type="submit" class="btn btn-info mb-2 col-sm-3" id="p" name="p" value="achievement">Achievement</a></button>

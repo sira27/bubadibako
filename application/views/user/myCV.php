@@ -262,6 +262,7 @@
     </div><!-- /.example-modal -->
   </div>
 </div>
+</div>
 <!-- /.container-fluid -->
 
 </div>

@@ -1,5 +1,5 @@
 <h1 class="h3 mb-4 mt-4 text-gray-800">Student</h1>
-<form action="<?=site_url('user/add_create_cv')?>" method="post">
+<?= form_open_multipart('user/add_create_cv_student') ?>
   <div class="form-group row">
     <label for="nim" class="col-sm-2 col-form-label">NIM</label>
     <div class="col-sm-10">
