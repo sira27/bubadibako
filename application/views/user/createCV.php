@@ -152,7 +152,7 @@
   <h1 class="h3 mb-4 text-gray-800">Create Curriculum Vitae</h1>
 
    <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-12">
       <?= $this->session->flashdata('message');  ?>
     </div>
   </div>
@@ -160,10 +160,10 @@
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
   <button type="submit" class="btn btn-info mb-2 col-sm-3" id="p" name="p" value="student">Student</a></button>
   <button type="submit" class="btn btn-info mb-2 col-sm-3" id="p" name="p" value="achievement">Achievement</a></button>
-  <button type="submit" class="btn btn-info mb-2 col-sm-3" id="p" name="p" value="education">Education</button>
-  <button type="submit" class="btn btn-info mb-2 col-sm-2" id="p" name="p" value="internship">Internship</button>
-  <button type="submit" class="btn btn-info mb-2 col-sm-3" id="p" name="p" value="organizational">Organizational</button>
   <button type="submit" class="btn btn-info mb-2 col-sm-3" id="p" name="p" value="certification">Certification</button>
+  <button type="submit" class="btn btn-info mb-2 col-sm-2" id="p" name="p" value="education">Education</button>
+  <button type="submit" class="btn btn-info mb-2 col-sm-3" id="p" name="p" value="internship">Internship</button>
+  <button type="submit" class="btn btn-info mb-2 col-sm-3" id="p" name="p" value="organizational">Organizational</button>
   <button type="submit" class="btn btn-info mb-2 col-sm-3" id="p" name="p" value="skill">Skills</button>
   <button type="submit" class="btn btn-info mb-2 col-sm-2" id="p" name="p" value="training">Training</button>
 </form>
@@ -179,6 +179,9 @@
         case 'achievement':
           include 'achievement.php';
           break;
+        case 'certification':
+          include 'certification.php';
+          break;
         case 'education':
           include 'education.php';
           break;
@@ -187,9 +190,6 @@
           break;
         case 'organizational':
           include 'organizational.php';
-          break;
-        case 'certification':
-          include 'certification.php';
           break;
         case 'skill':
           include 'skill.php';

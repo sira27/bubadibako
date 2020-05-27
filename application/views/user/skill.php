@@ -1,15 +1,15 @@
 <h1 class="h3 mb-4 mt-4 text-gray-800">Skills</h1>
-<form action="" method="post">
+<?= form_open_multipart('user/add_create_cv_skill') ?>
   <div class="form-group row">
-    <label for="jenisKeahlian" class="col-sm-2 col-form-label">Jenis Keahlian</label>
+    <label for="jenis_skill" class="col-sm-2 col-form-label">Jenis Keahlian</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="jenisKeahlian" name="jenisKeahlian" value="" >
+      <input type="text" class="form-control" id="jenis_skill" name="jenis_skill" value="" >
     </div>
   </div>
   <div class="form-group row">
-    <label for="namaKeahlian" class="col-sm-2 col-form-label">Nama Keahlian</label>
+    <label for="nama_skill" class="col-sm-2 col-form-label">Nama Keahlian</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="namaKeahlian" name="namaKeahlian" value="" >
+      <input type="text" class="form-control" id="nama_skill" name="nama_skill" value="" >
     </div>
   </div>
   <div class="form-group row">

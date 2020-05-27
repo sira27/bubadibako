@@ -1,15 +1,19 @@
 <h1 class="h3 mb-4 mt-4 text-gray-800">Training</h1>
-<form action="" method="post">
+<?= form_open_multipart('user/add_create_cv_training') ?>
   <div class="form-group row">
-    <label for="namaTraining" class="col-sm-2 col-form-label">Nama Training</label>
+    <label for="nama_training" class="col-sm-2 col-form-label">Nama Training</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="namaTraining" name="namaTraining" value="" >
+      <input type="text" class="form-control" id="nama_training" name="nama_training" value="" >
     </div>
   </div>
   <div class="form-group row">
     <label for="sebagai" class="col-sm-2 col-form-label">Sebagai</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="sebagai" name="sebagai" value="" >
+    <div class="col-sm-2">
+      <select class="form-control" id="sebagai" name="sebagai">
+        <option value="Trainer">Trainer</option>
+        <option value="ATS">ATS</option>
+        <option value="Peserta">Peserta</option>
+      </select>
     </div>
   </div>
   <div class="form-group row">

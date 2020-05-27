@@ -162,9 +162,173 @@ class User extends CI_Controller {
 
 		
 		$this->session->set_flashdata('message', '<div class ="alert alert-success" role="alert">
-					Insert data success!</div>');
+					Insert data success! Select others category if you want to add more data.</div>');
 		redirect('user/createCV');
 	}
+
+	public function add_create_cv_achievement() 
+	{
+		$this->load->model('Achievement_model');
+
+		$add = array(
+			'nim' => $this->session->userdata('nim'),
+			'nama_pencapaian'=>$this->input->post('nama_pencapaian'),
+			'tahun'=>$this->input->post('tahun'),
+			'deskripsi_pencapaian'=>$this->input->post('deskripsi'),
+			'bukti_pendukung' => 'default.jpg',
+			'status' => 0,
+			'tanggal_disetujui' => 0
+
+			);
+
+		$this->Achievement_model->insert_data($add['nim'], $add['nama_pencapaian'], $add['tahun'], $add['deskripsi_pencapaian'], $add['bukti_pendukung'], $add['status'], $add['tanggal_disetujui']);
+
+		
+		$this->session->set_flashdata('message', '<div class ="alert alert-success" role="alert">
+					Insert data success! Select others category if you want to add more data.</div>');
+		redirect('user/createCV');
+	}
+
+	public function add_create_cv_certification()
+	{
+		$this->load->model('Certification_model');
+
+		$add = array(
+			'nim' => $this->session->userdata('nim'),
+			'nama_kegiatan'=>$this->input->post('nama_kegiatan'),
+			'deskripsi_kegiatan'=>$this->input->post('deskripsi_kegiatan'),
+			'tahun'=>$this->input->post('tahun'),
+			'bukti_pendukung' => 'default.jpg',
+			'status' => 0,
+			'tanggal_disetujui' => 0
+
+			);
+
+		$this->Certification_model->insert_data($add['nim'], $add['nama_kegiatan'], $add['deskripsi_kegiatan'], $add['tahun'], $add['bukti_pendukung'], $add['status'], $add['tanggal_disetujui']);
+
+		
+		$this->session->set_flashdata('message', '<div class ="alert alert-success" role="alert">
+					Insert data success! Select others category if you want to add more data.</div>');
+		redirect('user/createCV');
+	}
+
+	public function add_create_cv_education()
+	{
+		$this->load->model('Education_model');
+
+		$add = array(
+			'nim' => $this->session->userdata('nim'),
+			'jenjang_pendidikan'=>$this->input->post('jenjang_pendidikan'),
+			'tahun'=>$this->input->post('tahun'),
+			'deskripsi'=>$this->input->post('deskripsi'),
+			'bukti_pendukung' => 'default.jpg',
+			'status' => 0,
+			'tanggal_disetujui' => 0
+
+			);
+
+		$this->Education_model->insert_data($add['nim'], $add['jenjang_pendidikan'], $add['tahun'], $add['deskripsi'], $add['bukti_pendukung'], $add['status'], $add['tanggal_disetujui']);
+
+		
+		$this->session->set_flashdata('message', '<div class ="alert alert-success" role="alert">
+					Insert data success! Select others category if you want to add more data.</div>');
+		redirect('user/createCV');
+	}
+
+	public function add_create_cv_internship()
+	{
+		$this->load->model('Internship_model');
+
+		$add = array(
+			'nim' => $this->session->userdata('nim'),
+			'tempat_kerja'=>$this->input->post('tempat_kerja'),
+			'posisi_kerja'=>$this->input->post('posisi_kerja'),
+			'tahun'=>$this->input->post('tahun'),
+			'deskripsi_kegiatan'=>$this->input->post('deskripsi_kegiatan'),
+			'bukti_pendukung' => 'default.jpg',
+			'status' => 0,
+			'tanggal_disetujui' => 0
+
+			);
+
+		$this->Internship_model->insert_data($add['nim'], $add['tempat_kerja'], $add['posisi_kerja'], $add['tahun'], $add['deskripsi_kegiatan'], $add['bukti_pendukung'], $add['status'], $add['tanggal_disetujui']);
+
+		
+		$this->session->set_flashdata('message', '<div class ="alert alert-success" role="alert">
+					Insert data success! Select others category if you want to add more data.</div>');
+		redirect('user/createCV');
+	}
+
+	public function add_create_cv_organizational()
+	{
+		$this->load->model('Organizational_model');
+
+		$add = array(
+			'nim' => $this->session->userdata('nim'),
+			'nama_organisasi'=>$this->input->post('nama_organisasi'),
+			'jabatan_organisasi'=>$this->input->post('jabatan_organisasi'),
+			'tahun'=>$this->input->post('tahun'),
+			'deskripsi_kegiatan'=>$this->input->post('deskripsi_kegiatan'),
+			'bukti_pendukung' => 'default.jpg',
+			'status' => 0,
+			'tanggal_disetujui' => 0
+
+			);
+
+		$this->Organizational_model->insert_data($add['nim'], $add['nama_organisasi'], $add['jabatan_organisasi'], $add['tahun'], $add['deskripsi_kegiatan'], $add['bukti_pendukung'], $add['status'], $add['tanggal_disetujui']);
+
+		
+		$this->session->set_flashdata('message', '<div class ="alert alert-success" role="alert">
+					Insert data success! Select others category if you want to add more data.</div>');
+		redirect('user/createCV');
+	}
+
+	public function add_create_cv_skill()
+	{
+		$this->load->model('Skills_model');
+
+		$add = array(
+			'nim' => $this->session->userdata('nim'),
+			'jenis_skill'=>$this->input->post('jenis_skill'),
+			'nama_skill'=>$this->input->post('nama_skill'),
+			'bukti_pendukung' => 'default.jpg',
+			'status' => 0,
+			'tanggal_disetujui' => 0
+
+			);
+
+		$this->Skills_model->insert_data($add['nim'], $add['jenis_skill'], $add['nama_skill'], $add['bukti_pendukung'], $add['status'], $add['tanggal_disetujui']);
+
+		
+		$this->session->set_flashdata('message', '<div class ="alert alert-success" role="alert">
+					Insert data success! Select others category if you want to add more data.</div>');
+		redirect('user/createCV');
+	}
+
+	public function add_create_cv_training()
+	{
+		$this->load->model('Training_model');
+
+		$add = array(
+			'nim' => $this->session->userdata('nim'),
+			'nama_training'=>$this->input->post('nama_training'),
+			'sebagai'=>$this->input->post('sebagai'),
+			'tahun' => $this->input->post('tahun'),
+			'bukti_pendukung' => 'default.jpg',
+			'status' => 0,
+			'tanggal_disetujui' => 0
+
+			);
+
+		$this->Training_model->insert_data($add['nim'], $add['nama_training'], $add['sebagai'], $add['tahun'], $add['bukti_pendukung'], $add['status'], $add['tanggal_disetujui']);
+
+		
+		$this->session->set_flashdata('message', '<div class ="alert alert-success" role="alert">
+					Insert data success! Select others category if you want to add more data.</div>');
+		redirect('user/createCV');
+	}
+
+
 
 
 	

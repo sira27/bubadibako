@@ -1,15 +1,15 @@
 <h1 class="h3 mb-4 mt-4 text-gray-800">Internship</h1>
-<form action="" method="post">
+<?= form_open_multipart('user/add_create_cv_internship') ?>
   <div class="form-group row">
-    <label for="tempatKerja" class="col-sm-2 col-form-label">Tempat Kerja</label>
+    <label for="tempat_kerja" class="col-sm-2 col-form-label">Tempat Kerja</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="tempatKerja" name="tempatKerja" value="" >
+      <input type="text" class="form-control" id="tempat_kerja" name="tempat_kerja" value="" >
     </div>
   </div>
   <div class="form-group row">
-    <label for="posisi" class="col-sm-2 col-form-label">Posisi Kerja</label>
+    <label for="posisi_kerja" class="col-sm-2 col-form-label">Posisi Kerja</label>
     <div class="col-sm-2">
-      <input type="text" class="form-control" id="posisi" name="posisi" value="" >
+      <input type="text" class="form-control" id="posisi_kerja" name="posisi_kerja" value="" >
     </div>
   </div>
   <div class="form-group row">
@@ -19,9 +19,9 @@
     </div>
   </div>
   <div class="form-group row">
-    <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi Kegiatan</label>
+    <label for="deskripsi_kegiatan" class="col-sm-2 col-form-label">Deskripsi Kegiatan</label>
     <div class="col-sm-10">
-      <textarea type="text" class="form-control" id="deskripsi" name="deskripsi"></textarea>
+      <textarea type="text" class="form-control" id="deskripsi_kegiatan" name="deskripsi_kegiatan"></textarea>
     </div>
   </div>
   <div class="form-group row">

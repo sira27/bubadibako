@@ -12,6 +12,10 @@
               </div>
               <form class="user" method="post" action="<?= base_url('auth/registration'); ?>">
                 <div class="form-group">
+                  <input type="text" class="form-control form-control-user" id="nim" name="nim" placeholder="Enter your student ID" value="<?= set_value('nim');  ?>">
+                  <?= form_error('nim', '<small class="text-danger pl-3">', '</small>');  ?>
+                </div>
+                <div class="form-group">
                   <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Full Name" value="<?= set_value('name');  ?>">
                   <?= form_error('name', '<small class="text-danger pl-3">', '</small>');  ?>
                 </div>
@@ -28,14 +32,6 @@
                     <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
                   </div>
                 </div>
-                 <div class="form-group">
-                    <select class="custom-select" id="role" name="role">
-                      <option selected>Create Account as</option>
-                      <option value="1">Head of Study Program</option>
-                      <option value="2">Academic Adviser</option>
-                      <option value="3">Student</option>
-                    </select>
-                    </div> 
                 <button type="submit" class="btn btn-primary btn-user btn-block">
                   Register Account
                 </button>

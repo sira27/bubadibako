@@ -1,21 +1,21 @@
 <h1 class="h3 mb-4 mt-4 text-gray-800">Certification</h1>
-<form action="" method="post">
+<?= form_open_multipart('user/add_create_cv_certification') ?>
   <div class="form-group row">
-    <label for="namaKegiatan" class="col-sm-2 col-form-label">Nama Kegiatan</label>
+    <label for="nama_kegiatan" class="col-sm-2 col-form-label">Nama Kegiatan</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="namaKegiatan" name="namaKegiatan" value="" >
+      <input type="text" class="form-control" id="nama_kegiatan" name="nama_kegiatan" value="" >
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="deskripsi_kegiatan" class="col-sm-2 col-form-label">Deskripsi Kegiatan</label>
+    <div class="col-sm-10">
+      <textarea type="text" class="form-control" id="deskripsi_kegiatan" name="deskripsi_kegiatan"></textarea>
     </div>
   </div>
   <div class="form-group row">
     <label for="tahun" class="col-sm-2 col-form-label">Tahun</label>
     <div class="col-sm-2">
       <input type="number" class="form-control" min="2000" max="2099" id="tahun" name="tahun" value="2020">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi Kegiatan</label>
-    <div class="col-sm-10">
-      <textarea type="text" class="form-control" id="deskripsi" name="deskripsi"></textarea>
     </div>
   </div>
   <div class="form-group row">

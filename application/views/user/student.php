@@ -3,7 +3,7 @@
   <div class="form-group row">
     <label for="nim" class="col-sm-2 col-form-label">NIM</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" maxlength="12" id="nim" name="nim" value="" >
+      <input type="text" class="form-control" maxlength="12" id="nim" name="nim" value="<?= $user['nim']; ?>" readonly>
     </div>
   </div>
   <div class="form-group row">
@@ -32,7 +32,7 @@
   </div>
   <div class="form-group row">
     <label for="agama" class="col-sm-2 col-form-label">Agama</label>
-    <div class="col-sm-10">
+    <div class="col-sm-2">
       <select class="form-control" id="agama" name="agama">
         <option value="Islam">Islam</option>
         <option value="Kristen">Kristen</option>

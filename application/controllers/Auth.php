@@ -40,6 +40,7 @@ class Auth extends CI_Controller {
 				//cek password
 				if (password_verify($password, $user['password'])) {
 					$data = [
+						'nim' => $user['nim'],
 						'email' => $user['email'],
 						'role_id' => $user['role_id'],
 						'image' => $user['image']
@@ -75,6 +76,9 @@ class Auth extends CI_Controller {
 		/*if ($this->session->userdata('email')) {
 			redirect('admin');
 		}*/
+		$this->form_validation->set_rules('nim', 'Student ID', 'required|trim|min_length[10]|max_length[10]|is_unique[user.nim]', [
+				'is_unique' => 'This student ID has been registered!'
+		]);
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
 				'is_unique' => 'This email has been registered!'
@@ -84,7 +88,6 @@ class Auth extends CI_Controller {
 				'min_length' => 'Password too short!'
 		]);
 		$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
-		$this->form_validation->set_rules('role', 'Role', 'required|trim');
 
 		if ($this->form_validation->run() == false) {
 			$data['title'] = 'CV Online Registration';
@@ -94,6 +97,7 @@ class Auth extends CI_Controller {
 		}else{
 			$email = $this->input->post('email', true);
 			$data = [
+				'nim' => $this->input->post('nim'),
 				'name' => htmlspecialchars($this->input->post('name', true)),
 				'email' => htmlspecialchars($email),
 				'image' => 'default.jpg',
@@ -130,7 +134,7 @@ class Auth extends CI_Controller {
 			'protocol'  => 'smtp',
 			'smtp_host' => 'ssl://smtp.googlemail.com',
 			'smtp_user' => 'barwisnu69@gmail.com',
-			'smtp_pass' => 'KingShitOnly69',
+			'smtp_pass' => 'KingShitOnly',
 			'smtp_port' => 465,
 			'mailtype'  => 'html',
 			'charset'   => 'utf-8',

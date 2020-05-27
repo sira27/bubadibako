@@ -1,15 +1,15 @@
 <h1 class="h3 mb-4 mt-4 text-gray-800">Organizational</h1>
-<form action="" method="post">
+<?= form_open_multipart('user/add_create_cv_organizational') ?>
   <div class="form-group row">
-    <label for="namaOrganisasi" class="col-sm-2 col-form-label">Nama Organisasi</label>
+    <label for="nama_organisasi" class="col-sm-2 col-form-label">Nama Organisasi</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="namaOrganisasi" name="namaOrganisasi" value="" >
+      <input type="text" class="form-control" id="nama_organisasi" name="nama_organisasi" value="" >
     </div>
   </div>
   <div class="form-group row">
-    <label for="jabatan" class="col-sm-2 col-form-label">Jabatan Organisasi</label>
+    <label for="jabatan_organisasi" class="col-sm-2 col-form-label">Jabatan Organisasi</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="jabatan" name="jabatan" value="" >
+      <input type="text" class="form-control" id="jabatan_organisasi" name="jabatan_organisasi" value="" >
     </div>
   </div>
   <div class="form-group row">
@@ -19,9 +19,9 @@
     </div>
   </div>
   <div class="form-group row">
-    <label for="description" class="col-sm-2 col-form-label">Deskripsi Kegiatan</label>
+    <label for="deskripsi_kegiatan" class="col-sm-2 col-form-label">Deskripsi Kegiatan</label>
     <div class="col-sm-10">
-      <textarea type="text" class="form-control" id="description" name="description"></textarea>
+      <textarea type="text" class="form-control" id="deskripsi_kegiatan" name="deskripsi_kegiatan"></textarea>
     </div>
   </div>
   <div class="form-group row">

@@ -1,9 +1,9 @@
 <h1 class="h3 mb-4 mt-4 text-gray-800">Education</h1>
-<form action="" method="post">
+<?= form_open_multipart('user/add_create_cv_education') ?>
   <div class="form-group row">
-    <label for="jenjang" class="col-sm-2 col-form-label">Jenjang pendidikan</label>
+    <label for="jenjang_pendidikan" class="col-sm-2 col-form-label">Jenjang Pendidikan</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="jenjang" name="jenjang" value="" >
+      <input type="text" class="form-control" id="jenjang_pendidikan" name="jenjang_pendidikan" value="" >
     </div>
   </div>
   <div class="form-group row">
