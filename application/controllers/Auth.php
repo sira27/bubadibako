@@ -77,7 +77,7 @@ class Auth extends CI_Controller {
 			redirect('admin');
 		}*/
 		$this->form_validation->set_rules('nim', 'Student ID', 'required|trim|min_length[10]|max_length[10]|is_unique[user.nim]', [
-				'is_unique' => 'This student ID has been registered!'
+				'is_unique' => 'This Student ID has been registered!'
 		]);
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [

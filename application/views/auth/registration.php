@@ -12,7 +12,7 @@
               </div>
               <form class="user" method="post" action="<?= base_url('auth/registration'); ?>">
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-user" id="nim" name="nim" placeholder="Enter your student ID" value="<?= set_value('nim');  ?>">
+                  <input type="text" class="form-control form-control-user" id="nim" name="nim" placeholder="Enter your Student ID">
                   <?= form_error('nim', '<small class="text-danger pl-3">', '</small>');  ?>
                 </div>
                 <div class="form-group">

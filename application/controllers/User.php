@@ -218,16 +218,19 @@ class User extends CI_Controller {
 
 		$add = array(
 			'nim' => $this->session->userdata('nim'),
-			'jenjang_pendidikan'=>$this->input->post('jenjang_pendidikan'),
-			'tahun'=>$this->input->post('tahun'),
-			'deskripsi'=>$this->input->post('deskripsi'),
+			'jenjang_pendidikan1'=>$this->input->post('jenjang_pendidikan1'),
+			'tahun1'=>$this->input->post('tahun1'),
+			'deskripsi1'=>$this->input->post('deskripsi1'),
+			'jenjang_pendidikan2'=>$this->input->post('jenjang_pendidikan2'),
+			'tahun2'=>$this->input->post('tahun2'),
+			'deskripsi2'=>$this->input->post('deskripsi2'),
 			'bukti_pendukung' => 'default.jpg',
 			'status' => 0,
 			'tanggal_disetujui' => 0
 
 			);
 
-		$this->Education_model->insert_data($add['nim'], $add['jenjang_pendidikan'], $add['tahun'], $add['deskripsi'], $add['bukti_pendukung'], $add['status'], $add['tanggal_disetujui']);
+		$this->Education_model->insert_data($add['nim'], $add['jenjang_pendidikan1'], $add['tahun1'], $add['deskripsi1'], $add['jenjang_pendidikan2'], $add['tahun2'], $add['deskripsi2'], $add['bukti_pendukung'], $add['status'], $add['tanggal_disetujui']);
 
 		
 		$this->session->set_flashdata('message', '<div class ="alert alert-success" role="alert">

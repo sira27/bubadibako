@@ -1,17 +1,30 @@
 <?php  
 class Education_model extends CI_Model {
 
-        public function insert_data($nim, $jenjang_pendidikan, $tahun, $deskripsi, $bukti_pendukung, $status, $tanggal_disetujui)
+        public function insert_data($nim, $jenjang_pendidikan1, $tahun1, $deskripsi1, $jenjang_pendidikan2, $tahun2, $deskripsi2, $bukti_pendukung, $status, $tanggal_disetujui)
         {
         	$data = array(
+        		array(
         		'nim'					=> $nim,
-		        'jenjang_pendidikan'	=> $jenjang_pendidikan,
-				'tahun'					=> $tahun,
-				'deskripsi'				=> $deskripsi,
+		        'jenjang_pendidikan'	=> $jenjang_pendidikan1,
+				'tahun'					=> $tahun1,
+				'deskripsi'				=> $deskripsi1,
 				'bukti_pendukung'		=> $bukti_pendukung,
 				'status'				=> $status,
-				'tanggal_disetujui' => $tanggal_disetujui
+				'tanggal_disetujui' 	=> $tanggal_disetujui
+				),
+        		array(
+        		'nim'					=> $nim,
+		        'jenjang_pendidikan'	=> $jenjang_pendidikan2,
+				'tahun'					=> $tahun2,
+				'deskripsi'				=> $deskripsi2,
+				'bukti_pendukung'		=> $bukti_pendukung,
+				'status'				=> $status,
+				'tanggal_disetujui' 	=> $tanggal_disetujui
+				)	
 			);
-            $this->db->insert('education', $data);
+
+
+            $this->db->insert_batch('education', $data);
         }
 }
