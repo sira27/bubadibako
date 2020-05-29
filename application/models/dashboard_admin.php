@@ -21,5 +21,15 @@ class dashboard_admin extends CI_model
         $query = $this->db->get();
         return $query;
     }
+
+    public function add($post)
+    {
+        $params['name'] = $post['fullname'];
+        $params['email'] = $post['email'];
+        $params['password'] = sha1($post['password']);
+        // $params['address'] = $post['address'] != "" ? $post['address'] : null;
+        $params['role_id'] = $post['role'];
+        $this->db->insert('user', $params);
+    }
 }
 ?>

@@ -150,7 +150,7 @@
       <div class="box-header">
         <h3 class="box-title">Data Users</h3>
         <div class="pull-right">
-          <a href="#" class="btn btn-primary btn-flat mb-2">
+          <a href="<?=site_url('admin/add_user')?>" class="btn btn-primary btn-flat mb-2">
             <i class="fa fa-user-plus fa-fw"></i>
           </a>
         </div>
@@ -193,10 +193,10 @@
               ?></td>
               <td><?= date('d F Y', $data->date_created) ?></td>
               <td class="text-center">
-                <a href="#" class="btn btn-warning btn-sm">
+                <a href="<?=site_url('admin/edit_user')?>" class="btn btn-warning btn-sm">
                   <i class="fas fa-fw fa-edit"></i>
                 </a>
-                <a href="#" class="btn btn-danger btn-sm">
+                <a href="<?=site_url('admin/delete_user')?>" class="btn btn-danger btn-sm">
                   <i class="far fa-fw fa-trash-alt"></i>
                 </a>
               </td>
@@ -207,6 +207,138 @@
       </div>
     </div>
 
+  <!-- Modal Create User -->
+  <div class="modal fade bd-example-modal-lg" id="create" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create User</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="post">
+            <div class="form-group row">
+              <label for="name" class="col-sm-2 col-form-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="name" required>
+                <?= form_error('name', '<small class="text-danger pl-3">', '</small>');  ?>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="email" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="email" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="description" class="col-sm-2 col-form-label">Role</label>
+              <div class="col-sm-10">
+                <select id="role" name="role_id" class="form-control">
+                  <option value="">-- Pilih --</option>
+                  <option value="1">Head of Study Program</option>
+                  <option value="2">Academic Adviser</option>
+                  <option value="3">Student</option>
+                </select>
+              </div>
+            </div>
+        </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Create User</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  <!-- Modal Edit User -->
+  <div class="modal fade bd-example-modal-lg" id="edit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Your CV!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="post">
+            <div class="form-group row">
+              <label for="email" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="name" class="col-sm-2 col-form-label">Full Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>">
+                <?= form_error('name', '<small class="text-danger pl-3">', '</small>');  ?>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="description" class="col-sm-2 col-form-label">Description</label>
+              <div class="col-sm-10">
+                <textarea type="text" class="form-control" id="description" name="description"></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-2">Picture</div>
+              <div class="col-sm-10">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <img src="<?= base_url('assets/img/profile/').$user['image']; ?>" class="img-thumbnail">
+                  </div>
+                  <div class="col-sm-9">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="image" name="image">
+                      <label class="custom-file-label" for="image">Choose file</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Edit CV</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <!-- Modal Delete User-->
+    <div div class="modal fade" id="delete">
+      <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-red">
+                  <h5 class="modal-title" id="exampleModalLabel">Delete Data</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+                <form action="#">
+                    <input name="id" type="hidden" value="">
+                    <div class="modal-body">
+                        <p>Are you sure want to delete this?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.example-modal -->
 
   </div>
   <!-- /.container-fluid -->

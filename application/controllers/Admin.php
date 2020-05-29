@@ -8,6 +8,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		is_logged_in();
 		
+		$this->load->model('dashboard_admin');
 	}
 
 	public function index()
@@ -15,7 +16,6 @@ class Admin extends CI_Controller {
 		$data['title'] = 'Admin';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->load->model('dashboard_admin');
 		$data['row'] = $this->dashboard_admin->get();
 
 		$this->load->view('templates/header', $data);
@@ -134,4 +134,47 @@ class Admin extends CI_Controller {
     	$this->load->view('templates/footer');
 	}
 
+	public function add_user()
+	{
+		$data['title'] = 'Add User';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('fullname', 'Name', 'required|min_length[4]');
+		$this->form_validation->set_rules('email', 'Email', 'required|min_length[6]');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]',
+			array('matches' => '%s not matches')
+		);
+		$this->form_validation->set_rules('role', 'Role', 'required');
+
+		$this->form_validation->set_message('min_length', '{field} to short');
+
+		$this->form_validation->set_error_delimiters('<span style="color: red">', '</span>');
+
+		if ($this->form_validation->run() == FALSE) {	
+			$this->load->view('templates/header', $data);
+			$this->load->view('admin/user_form_add', $data);
+			$this->load->view('templates/footer');
+		} else {
+			$post = $this->input->post(null, TRUE);
+			$this->dashboard_admin->add($post);
+			if ($this->db->affected_rows() > 0) {
+				echo "<script> alert('Data berhasil disimpan'); </script>";
+			}
+			echo "<script> window.location='".site_url('Admin')."'; </script>";
+		}
+
+	}
+
+	public function edit_user()
+	{
+		$data['title'] = 'Add User';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('admin/user_form_edit', $data);
+    	$this->load->view('templates/footer');
+	}
 }
