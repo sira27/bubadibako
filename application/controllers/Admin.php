@@ -9,6 +9,7 @@ class Admin extends CI_Controller {
 		is_logged_in();
 		
 		$this->load->model('dashboard_admin');
+		$this->load->library('form_validation');
 	}
 
 	public function index()
@@ -139,12 +140,11 @@ class Admin extends CI_Controller {
 		$data['title'] = 'Add User';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->load->library('form_validation');
-
+		$this->form_validation->set_rules('induk', 'Nomor Induk', 'required|min_length[10]');
 		$this->form_validation->set_rules('fullname', 'Name', 'required|min_length[4]');
 		$this->form_validation->set_rules('email', 'Email', 'required|min_length[6]');
-		$this->form_validation->set_rules('password', 'Password', 'required');
-		$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]',
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
+		$this->form_validation->set_rules('passconf', 'Konfirmasi Password', 'required|matches[password]',
 			array('matches' => '%s not matches')
 		);
 		$this->form_validation->set_rules('role', 'Role', 'required');
@@ -165,16 +165,75 @@ class Admin extends CI_Controller {
 			}
 			echo "<script> window.location='".site_url('Admin')."'; </script>";
 		}
-
 	}
 
-	public function edit_user()
+	public function edit_user($id)
 	{
-		$data['title'] = 'Add User';
+		$data['title'] = 'Edit User';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->load->view('templates/header', $data);
-		$this->load->view('admin/user_form_edit', $data);
-    	$this->load->view('templates/footer');
+		$this->form_validation->set_rules('induk', 'Nomor Induk', 'required|min_length[10]');
+		$this->form_validation->set_rules('fullname', 'Name', 'required|min_length[4]');
+		$this->form_validation->set_rules('email', 'Email', 'required|callback_email_check');
+		if ($this->input->post('password')) {
+			$this->form_validation->set_rules('password', 'Password', 'min_length[6]');
+			$this->form_validation->set_rules('passconf', 'Konfirmasi Password', 'matches[password]',
+				array('matches' => '%s not matches')
+			);
+		}
+
+		if ($this->input->post('passconf')) {
+			$this->form_validation->set_rules('passconf', 'Konfirmasi Password', 'matches[password]',
+				array('matches' => '%s not matches')
+			);
+		}
+		$this->form_validation->set_rules('role', 'Role', 'required');
+
+		$this->form_validation->set_message('min_length', '{field} to short');
+
+		$this->form_validation->set_error_delimiters('<span style="color: red">', '</span>');
+
+		if ($this->form_validation->run() == FALSE) {	
+			$query = $this->dashboard_admin->get($id);
+			if ($query->num_rows() > 0) {
+				$data['row'] = $query->row();
+				$this->load->view('templates/header', $data);
+				$this->load->view('admin/user_form_edit', $data);
+				$this->load->view('templates/footer');
+			} else {
+				echo "<script> alert('Data tidak ditemukan');";
+				echo "window.location='".site_url('Admin')."'; </script>";
+			}
+		} else {
+			$post = $this->input->post(null, TRUE);
+			$this->dashboard_admin->edit($post);
+			if ($this->db->affected_rows() > 0) {
+				echo "<script> alert('Data berhasil disimpan'); </script>";
+			}
+			echo "<script> window.location='".site_url('Admin')."'; </script>";
+		}
+	}
+
+	function email_check() 
+	{
+		$post = $this->input->post(null, TRUE);
+		$query = $this->db->query("SELECT * FROM user WHERE email = '$post[email]' AND id != '$post[id]'");
+		if ($query->num_rows() > 0) {
+			$this->form_validation->set_message('email_check', '{field} already used');
+			return FALSE;
+		} else {
+			return TRUE;
+		}
+	}
+
+	public function delete_user()
+	{
+		$id = $this->input->post('id');
+		$this->dashboard_admin->delete($id);
+
+		if ($this->db->affected_rows() > 0) {
+			echo "<script> alert('Data berhasil dihapus'); </script>";
+		}
+		echo "<script> window.location='".site_url('Admin')."'; </script>";
 	}
 }

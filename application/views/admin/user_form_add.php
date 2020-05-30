@@ -162,7 +162,14 @@
                 <?php //echo validation_errors(); ?>
                 <form action="" method="post">
                     <div class="form-group row">
-                        <label for="name" class="col-sm-3 col-form-label">Name</label>
+                        <label for="induk" class="col-sm-3 col-form-label">Nomor Induk</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" name="induk">
+                            <?=form_error('induk');?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-form-label">Nama</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" name="fullname">
                             <?=form_error('fullname');?>
@@ -183,7 +190,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="passconf" class="col-sm-3 col-form-label">Password Confirmation</label>
+                        <label for="passconf" class="col-sm-3 col-form-label">Konfirmasi Password</label>
                         <div class="col-sm-9">
                             <input type="password" class="form-control" name="passconf">
                             <?=form_error('passconf');?>
@@ -202,7 +209,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <button type="submit" class="btn btn-primary btn-flat">Save</button>
+                        <button type="submit" class="btn btn-primary btn-flat">Simpan</button>
                         <button type="reset" class="btn btn-flat">Reset</button>
                     </div>
                 </form>

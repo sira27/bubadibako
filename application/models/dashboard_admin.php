@@ -24,6 +24,7 @@ class dashboard_admin extends CI_model
 
     public function add($post)
     {
+        $params['nim'] = $post['induk'];
         $params['name'] = $post['fullname'];
         $params['email'] = $post['email'];
         $params['password'] = sha1($post['password']);
@@ -31,5 +32,25 @@ class dashboard_admin extends CI_model
         $params['role_id'] = $post['role'];
         $this->db->insert('user', $params);
     }
+
+    public function edit($post)
+    {
+        $params['nim'] = $post['induk'];
+        $params['name'] = $post['fullname'];
+        $params['email'] = $post['email'];
+        if (!empty($post['password'])) {
+            $params['password'] = sha1($post['password']);
+        }
+        // $params['address'] = $post['address'] != "" ? $post['address'] : null;
+        $params['role_id'] = $post['role'];
+        $this->db->where('id', $post['id']);
+        $this->db->update('user', $params);
+    }
+
+    public function delete($id)
+	{
+        $this->db->where('id', $id);
+        $this->db->delete('user');
+	}
 }
 ?>

@@ -160,9 +160,11 @@
           <thead>
             <tr>
               <th>No.</th>
-              <th>Name</th>
+              <th>Nomor Induk</th>
+              <th>Nama</th>
               <th>Email</th>
               <th>Role</th>
+              <th>Is Active</th>
               <th>Date Created</th>
               <th>Action</th>
             </tr>
@@ -173,6 +175,7 @@
             foreach($row->result() as $key => $data) { ?>
             <tr>
               <td><?=$no++?>.</td>
+              <td><?=$data->nim?></td>
               <td><?=$data->name?></td>
               <td><?=$data->email?></td>
               <td><?php
@@ -191,14 +194,24 @@
                   break;
               }
               ?></td>
+              <td><?php
+              if ($data->is_active == 1) {
+                  echo "Active";
+              } else {
+                  echo "Disactive";
+              }
+              ?></td>
               <td><?= date('d F Y', $data->date_created) ?></td>
               <td class="text-center">
-                <a href="<?=site_url('admin/edit_user')?>" class="btn btn-warning btn-sm">
-                  <i class="fas fa-fw fa-edit"></i>
-                </a>
-                <a href="<?=site_url('admin/delete_user')?>" class="btn btn-danger btn-sm">
-                  <i class="far fa-fw fa-trash-alt"></i>
-                </a>
+              <form action="<?=site_url('admin/delete_user')?>" method="post">
+                  <a href="<?=site_url('admin/edit_user/'.$data->id)?>" class="btn btn-warning btn-sm">
+                    <i class="fas fa-fw fa-edit"></i>
+                  </a>
+                  <input type="hidden" name="id" value="<?=$data->id?>">
+                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin?');">
+                    <i class="far fa-fw fa-trash-alt"></i>
+                  </button>
+                </form>
               </td>
             </tr>
             <?php } ?>

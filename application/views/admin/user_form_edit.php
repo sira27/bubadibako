@@ -145,14 +145,80 @@
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Edit User Form</h1>
 
-<div class="row">
-<div class="col-lg-6">
-<?= $this->session->flashdata('message');  ?>
+<div class="box">
+    <div class="box-header">
+        <h1 class="h3 mb-4 text-gray-800">Edit User Form</h1>
+        <div class="pull-right">
+            <a href="<?=site_url('admin')?>" class="btn btn-warning btn-flat mb-2">
+                <i class="fa fa-undo fa-fw"></i> Back
+            </a>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <!-- Start Form -->
+                <form action="" method="post">
+                    <div class="form-group row">
+                        <label for="induk" class="col-sm-3 col-form-label">Nomor Induk</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" name="induk" value="<?=$this->input->post('induk') ?? $row->nim?>">
+                            <?=form_error('induk');?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-form-label">Name</label>
+                        <input type="hidden" name="id" value="<?=$row->id?>">
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="fullname" value="<?=$this->input->post('fullname') ?? $row->name?>">
+                            <?=form_error('fullname');?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" name="email" value="<?=$this->input->post('email') ?? $row->email?>">
+                            <?=form_error('email');?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-3 col-form-label">Password</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" name="password" value="<?=$this->input->post('password')?>">
+                            <small>Biarkan kosong jika tidak diganti</small>
+                            <?=form_error('password');?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="passconf" class="col-sm-3 col-form-label">Password Confirmation</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" name="passconf" value="<?=$this->input->post('passconf')?>">
+                            <?=form_error('passconf');?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="role" class="col-sm-3 col-form-label">Role</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="role">
+                                <?php $role = $this->input->post('role') ? $this->input->post('role') : $row->role_id?>
+                                <option value="1" <?=$role == 1 ? 'selected' : null?>>Head of Study Program</option>
+                                <option value="2" <?=$role == 2 ? 'selected' : null?>>Academic Adviser</option>
+                                <option value="3" <?=$role == 3 ? 'selected' : null?>>Student</option>
+                            </select>
+                            <?=form_error('role');?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <button type="submit" class="btn btn-primary btn-flat">Save</button>
+                        <button type="reset" class="btn btn-flat">Reset</button>
+                    </div>
+                </form>
+                <!-- End Form -->
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-
 
 
 </div>
