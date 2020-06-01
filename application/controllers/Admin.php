@@ -7,6 +7,7 @@ class Admin extends CI_Controller {
 	{
 		parent::__construct();
 		is_logged_in();
+		is_admin();
 		
 		$this->load->model('dashboard_admin');
 		$this->load->library('form_validation');
@@ -140,16 +141,18 @@ class Admin extends CI_Controller {
 		$data['title'] = 'Add User';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->form_validation->set_rules('induk', 'Nomor Induk', 'required|min_length[10]');
-		$this->form_validation->set_rules('fullname', 'Name', 'required|min_length[4]');
+		$this->form_validation->set_rules('induk', 'ID', 'required|trim|min_length[10]|max_length[10]|is_unique[user.nim]', [
+				'is_unique' => 'This ID has been registered!'
+		]);
+		$this->form_validation->set_rules('fullname', 'Name', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required|min_length[6]');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
-		$this->form_validation->set_rules('passconf', 'Konfirmasi Password', 'required|matches[password]',
+		$this->form_validation->set_rules('passconf', 'Password Repeat', 'required|matches[password]',
 			array('matches' => '%s not matches')
 		);
 		$this->form_validation->set_rules('role', 'Role', 'required');
 
-		$this->form_validation->set_message('min_length', '{field} to short');
+		$this->form_validation->set_message('min_length', '{field} too short');
 
 		$this->form_validation->set_error_delimiters('<span style="color: red">', '</span>');
 
@@ -159,9 +162,15 @@ class Admin extends CI_Controller {
 			$this->load->view('templates/footer');
 		} else {
 			$post = $this->input->post(null, TRUE);
+
 			$this->dashboard_admin->add($post);
 			if ($this->db->affected_rows() > 0) {
-				echo "<script> alert('Data berhasil disimpan'); </script>";
+				echo "<script> alert('Add user success'); </script>";
+			}
+			
+			if ($post['role'] == 2) {
+				$id = $this->dashboard_admin->select_id($post)->row_array();
+				$this->dashboard_admin->add_dosen($post, $id['id']);
 			}
 			echo "<script> window.location='".site_url('Admin')."'; </script>";
 		}
@@ -172,8 +181,10 @@ class Admin extends CI_Controller {
 		$data['title'] = 'Edit User';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->form_validation->set_rules('induk', 'Nomor Induk', 'required|min_length[10]');
-		$this->form_validation->set_rules('fullname', 'Name', 'required|min_length[4]');
+		$this->form_validation->set_rules('induk', 'ID', 'required|trim|min_length[10]|max_length[10]|is_unique[user.nim]', [
+				'is_unique' => 'This ID has been registered!'
+		]);
+		$this->form_validation->set_rules('fullname', 'Name', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required|callback_email_check');
 		if ($this->input->post('password')) {
 			$this->form_validation->set_rules('password', 'Password', 'min_length[6]');
@@ -183,13 +194,13 @@ class Admin extends CI_Controller {
 		}
 
 		if ($this->input->post('passconf')) {
-			$this->form_validation->set_rules('passconf', 'Konfirmasi Password', 'matches[password]',
+			$this->form_validation->set_rules('passconf', 'Password Repeat', 'matches[password]',
 				array('matches' => '%s not matches')
 			);
 		}
 		$this->form_validation->set_rules('role', 'Role', 'required');
 
-		$this->form_validation->set_message('min_length', '{field} to short');
+		$this->form_validation->set_message('min_length', '{field} too short');
 
 		$this->form_validation->set_error_delimiters('<span style="color: red">', '</span>');
 
@@ -208,7 +219,7 @@ class Admin extends CI_Controller {
 			$post = $this->input->post(null, TRUE);
 			$this->dashboard_admin->edit($post);
 			if ($this->db->affected_rows() > 0) {
-				echo "<script> alert('Data berhasil disimpan'); </script>";
+				echo "<script> alert('Edit user success'); </script>";
 			}
 			echo "<script> window.location='".site_url('Admin')."'; </script>";
 		}

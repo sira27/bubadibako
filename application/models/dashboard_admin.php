@@ -27,10 +27,32 @@ class dashboard_admin extends CI_model
         $params['nim'] = $post['induk'];
         $params['name'] = $post['fullname'];
         $params['email'] = $post['email'];
+        $params['image'] = 'default.jpg';
         $params['password'] = sha1($post['password']);
         // $params['address'] = $post['address'] != "" ? $post['address'] : null;
         $params['role_id'] = $post['role'];
+        $params['is_active'] = 1;
+        $params['date_created'] = time();
         $this->db->insert('user', $params);
+    }
+
+    public function add_dosen($post, $id)
+    {
+        $params['id'] = $id;
+        $params['nidn'] = $post['induk'];
+        $params['name'] = $post['fullname'];
+        $params['email'] = $post['email'];
+
+        $this->db->insert('dosen', $params);
+    }
+
+    public function select_id($post)
+    {
+        $this->db->select('id');
+        $this->db->from('user');
+        $this->db->where('nim', $post['induk']);
+        $query = $this->db->get();
+        return $query;   
     }
 
     public function edit($post)

@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin'); ?>"">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin'); ?>">
   <div class="sidebar-brand-icon rotate-n-15">
     <i class="fab fa-cuttlefish"></i><i class="fab fa-vuejs"></i>  
   </div>
@@ -17,7 +17,7 @@
 </div>
 
 <!-- Nav Item - Dashboard -->
-<li class="nav-item">
+<li class="nav-item active">
   <a class="nav-link" href="<?= base_url('admin');  ?>">
     <i class="fas fa-fw fa-tachometer-alt"></i>
     <span>Dashboard</span></a>
@@ -32,7 +32,7 @@
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item active">
+<li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
     <i class="fas fa-fw fa-user-cog"></i>
     <span>Profile</span>
@@ -162,14 +162,14 @@
                 <?php //echo validation_errors(); ?>
                 <form action="" method="post">
                     <div class="form-group row">
-                        <label for="induk" class="col-sm-3 col-form-label">Nomor Induk</label>
+                        <label for="induk" class="col-sm-3 col-form-label">ID</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" name="induk">
+                            <input type="text" class="form-control" name="induk">
                             <?=form_error('induk');?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="name" class="col-sm-3 col-form-label">Nama</label>
+                        <label for="name" class="col-sm-3 col-form-label">Name</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" name="fullname">
                             <?=form_error('fullname');?>
@@ -190,7 +190,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="passconf" class="col-sm-3 col-form-label">Konfirmasi Password</label>
+                        <label for="passconf" class="col-sm-3 col-form-label">Repeat Password</label>
                         <div class="col-sm-9">
                             <input type="password" class="form-control" name="passconf">
                             <?=form_error('passconf');?>
@@ -200,7 +200,7 @@
                         <label for="role" class="col-sm-3 col-form-label">Role</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="role">
-                                <option value="">- Pilih -</option>
+                                <option value="">- Select -</option>
                                 <option value="1">Head of Study Program</option>
                                 <option value="2">Academic Adviser</option>
                                 <option value="3">Student</option>
@@ -209,7 +209,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <button type="submit" class="btn btn-primary btn-flat">Simpan</button>
+                        <button type="submit" class="btn btn-primary btn-flat">Save</button>
                         <button type="reset" class="btn btn-flat">Reset</button>
                     </div>
                 </form>

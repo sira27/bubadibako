@@ -313,4 +313,14 @@ class Auth extends CI_Controller {
 		}
 	}
 
+	public function blocked_dosen()
+	{
+		$this->load->view('auth/blocked_dosen');
+	}
+
+	public function blocked_student()
+	{
+		$this->load->view('auth/blocked_student');
+	}
+
 }

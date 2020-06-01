@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin'); ?>"">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin'); ?>">
   <div class="sidebar-brand-icon rotate-n-15">
     <i class="fab fa-cuttlefish"></i><i class="fab fa-vuejs"></i>  
   </div>
@@ -17,7 +17,7 @@
 </div>
 
 <!-- Nav Item - Dashboard -->
-<li class="nav-item">
+<li class="nav-item active">
   <a class="nav-link" href="<?= base_url('admin');  ?>">
     <i class="fas fa-fw fa-tachometer-alt"></i>
     <span>Dashboard</span></a>
@@ -32,7 +32,7 @@
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item active">
+<li class="nav-item">
   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
     <i class="fas fa-fw fa-user-cog"></i>
     <span>Profile</span>
@@ -161,9 +161,9 @@
                 <!-- Start Form -->
                 <form action="" method="post">
                     <div class="form-group row">
-                        <label for="induk" class="col-sm-3 col-form-label">Nomor Induk</label>
+                        <label for="induk" class="col-sm-3 col-form-label">ID</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" name="induk" value="<?=$this->input->post('induk') ?? $row->nim?>">
+                            <input type="text" class="form-control" name="induk" value="<?=$this->input->post('induk') ?? $row->nim?>" readonly>
                             <?=form_error('induk');?>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 col-form-label">Email</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" name="email" value="<?=$this->input->post('email') ?? $row->email?>">
+                            <input type="email" class="form-control" name="email" value="<?=$this->input->post('email') ?? $row->email?>" readonly>
                             <?=form_error('email');?>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="passconf" class="col-sm-3 col-form-label">Password Confirmation</label>
+                        <label for="passconf" class="col-sm-3 col-form-label">Repeat Password</label>
                         <div class="col-sm-9">
                             <input type="password" class="form-control" name="passconf" value="<?=$this->input->post('passconf')?>">
                             <?=form_error('passconf');?>
