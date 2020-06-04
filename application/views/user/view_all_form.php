@@ -151,10 +151,10 @@
   <!-- Page Heading -->
   <h1 class="h3 mb-4 text-gray-800">View All Form</h1>
 
-  <div class="row">
-    <div class="card mb-4" style="width: 18rem;" >
-      <div class="card-header">
-        Personal Info
+  <div class="card-deck">
+    <div class="card mb-4" style="width: 10rem;" >
+      <div class="card-header text-white bg-info">
+        Student Info
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -167,50 +167,188 @@
         </li>
         <li class="list-group-item">
             <h5 class="card-title">Nama Lengkap</h5>
-            <p class="card-text"><?= $user['name']; ?></p> 
+            <p class="card-text"><?= $x->nama; ?></p> 
         </li>
         <li class="list-group-item">
             <h5 class="card-title">Tempat Lahir</h5>
-            <p class="card-text"><?= $nim_mahasiswa->tempat_lahir; ?></p> 
+            <p class="card-text"><?= $x->tempat_lahir ?></p> 
         </li>
         <li class="list-group-item">
             <h5 class="card-title">Tanggal Lahir</h5>
-            <p class="card-text"><?= date('d F Y', $nim_mahasiswa['tanggal_lahir']) ?></p>
+            <p class="card-text"><?=$x->tanggal_lahir ?></p>
         </li>
         <li class="list-group-item">
             <h5 class="card-title">Agama</h5>
-            <p class="card-text"><?= $nim_mahasiswa['agama']; ?></p> 
+            <p class="card-text"><?=$x->agama ?></p> 
         </li>
         <li class="list-group-item">
             <h5 class="card-title">Alamat</h5>
-            <p class="card-text"><?= $nim_mahasiswa['alamat']; ?></p> 
+            <p class="card-text"><?=$x->alamat ?></p> 
         </li>
         <li class="list-group-item">
             <h5 class="card-title">Deskripsi Diri</h5>
-            <p class="card-text"><?= $nim_mahasiswa['deskripsi_diri']; ?></p> 
+            <p class="card-text"><?=$x->deskripsi_diri ?></p> 
         </li>
       </ul>
     </div>
 
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Achievement</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
+    <div class="card mb-4" style="width: 18rem;" >
+      <div class="card-header text-white bg-info">
+        Achievement
       </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <h5 class="card-title">Nama Pencapaian</h5>
+            <p class="card-text"><?=$a->nama_pencapaian ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Tahun</h5>
+            <p class="card-text"><?=$a->tahun ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Deskripsi Pencapaian</h5>
+            <p class="card-text"><?=$a->deskripsi_pencapaian ?></p> 
+        </li>
+      </ul>
+    </div>
+
+    <div class="card mb-4" style="width: 18rem;" >
+      <div class="card-header text-white bg-info">
+        Certification
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <h5 class="card-title">Nama Kegiatan</h5>
+            <p class="card-text"><?=$b->nama_kegiatan ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Deskripsi Kegiatan</h5>
+            <p class="card-text"><?=$b->deskripsi_kegiatan ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Tahun</h5>
+            <p class="card-text"><?=$b->tahun ?></p> 
+        </li>
+      </ul>
+    </div>
+
+    <div class="card mb-4" style="width: 18rem;" >
+      <div class="card-header text-white bg-info">
+        Education
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <h5 class="card-title">Jenjang Pendidikan 1</h5>
+            <p class="card-text"><?=$c->jenjang_pendidikan ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Tahun</h5>
+            <p class="card-text"><?=$c->tahun ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Deskripsi</h5>
+            <p class="card-text"><?=$c->deskripsi ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Jenjang Pendidikan 2</h5>
+            <p class="card-text"><?=$c->jenjang_pendidikan ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Tahun</h5>
+            <p class="card-text"><?=$c->tahun ?></p>
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Deskripsi</h5>
+            <p class="card-text"><?=$c->deskripsi ?></p> 
+        </li>
+        </ul>
     </div>
   </div>
 
-  <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Certification</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
+    <div class="card-deck">
+    <div class="card mb-4" style="width: 18rem;" >
+      <div class="card-header text-white bg-info">
+        Internship
       </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <h5 class="card-title">Tempat Kerja</h5>
+            <p class="card-text"><?=$d->tempat_kerja ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Posisi Kerja</h5>
+            <p class="card-text"><?=$d->posisi_kerja ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Tahun</h5>
+            <p class="card-text"><?=$d->tahun ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Deskripsi Kegiatan</h5>
+            <p class="card-text"><?=$d->deskripsi_kegiatan ?></p> 
+        </li>
+        </ul>
     </div>
-  </div>
+
+    <div class="card mb-4" style="width: 18rem;" >
+      <div class="card-header text-white bg-info">
+        Organizational
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <h5 class="card-title">Nama Organisasi</h5>
+            <p class="card-text"><?=$e->nama_organisasi ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Jabatan Organisasi</h5>
+            <p class="card-text"><?=$e->jabatan_organisasi ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Tahun</h5>
+            <p class="card-text"><?=$e->tahun ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Deskripsi Kegiatan</h5>
+            <p class="card-text"><?=$e->deskripsi_kegiatan ?></p> 
+        </li>
+        </ul>
+    </div>
+
+    <div class="card mb-4" style="width: 18rem;" >
+      <div class="card-header text-white bg-info">
+        Skills
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <h5 class="card-title">Jenis Keahlian</h5>
+            <p class="card-text"><?=$f->jenis_skill ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Nama Keahlian</h5>
+            <p class="card-text"><?=$f->nama_skill ?></p> 
+        </li>
+        </ul>
+    </div>
+
+    <div class="card mb-4" style="width: 18rem;" >
+      <div class="card-header text-white bg-info">
+        Training
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <h5 class="card-title">Nama Training</h5>
+            <p class="card-text"><?=$g->nama_training ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Sebagai</h5>
+            <p class="card-text"><?=$g->sebagai ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Tahun</h5>
+            <p class="card-text"><?=$g->tahun ?></p> 
+        </li>
+        </ul>
+    </div>
 
 
 

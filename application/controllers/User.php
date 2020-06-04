@@ -8,6 +8,16 @@ class User extends CI_Controller {
 		parent::__construct();
 		is_logged_in();
 		is_student();
+
+		$this->load->model('Student_model');
+		$this->load->model('Achievement_model');
+		$this->load->model('Certification_model');
+		$this->load->model('Education_model');
+		$this->load->model('Internship_model');
+		$this->load->model('Organizational_model');
+		$this->load->model('Skills_model');
+		$this->load->model('Training_model');
+
 	}
 
 	public function index()
@@ -196,6 +206,30 @@ class User extends CI_Controller {
 		$this->Achievement_model->insert_data($add['nim'], $add['nama_pencapaian'], $add['tahun'], $add['deskripsi_pencapaian'], $add['bukti_pendukung'], $add['status'], $add['tanggal_disetujui']);
 
 		
+			//cek jika ada gambar yang akan diupload
+			$upload_image = $_FILES['image']['name'];
+
+			if ($upload_image) {
+				$config['allowed_types']= 'gif|jpg|png';
+				$config['max_size']     = '2048';
+				$config['upload_path'] = './assets/img/CV';
+
+				$this->load->library('upload', $config);
+
+				if ($this->upload->do_upload('image')) {
+					$old_image = $data['achievement']['bukti_pendukung'];
+					if ($old_image != 'default.jpg') {
+						unlink(FCPATH.'assets/img/CV'.$old_image);
+					}
+					$new_image = $this->upload->data('file_name');
+					$this->db->set('image', $new_image);
+				}else{
+					echo $this->upload->display_errors();
+				}
+			 } //gagal upload file default tidak dapat diganti
+			
+
+		
 		$this->session->set_flashdata('message', '<div class ="alert alert-success" role="alert">
 					Insert data success! Select others category if you want to add more data.</div>');
 		redirect('user/createCV');
@@ -347,6 +381,16 @@ class User extends CI_Controller {
 	{
 		$data['title'] = 'View All Form';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+
+		$data['x'] = $this->Student_model->get();
+		$data['a'] = $this->Achievement_model->get();
+		$data['b'] = $this->Certification_model->get();
+		$data['c'] = $this->Education_model->get();
+		$data['d'] = $this->Internship_model->get();
+		$data['e'] = $this->Organizational_model->get();
+		$data['f'] = $this->Skills_model->get();
+		$data['g'] = $this->Training_model->get();
 
 		$this->load->view('templates/header', $data);
     	$this->load->view('user/view_all_form', $data);

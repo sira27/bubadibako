@@ -1,6 +1,15 @@
 <?php  
 class Organizational_model extends CI_Model {
 
+	public function get($id = null)
+    {
+        $this->db->from('organizational');
+        if ($id != null)
+            $this->db->where('id', $id);
+        $query = $this->db->get()->row();
+        return $query;
+    }
+
         public function insert_data($nim, $nama_organisasi, $jabatan_organisasi, $tahun, $deskripsi_kegiatan, $bukti_pendukung, $status, $tanggal_disetujui)
         {
         	$data = array(

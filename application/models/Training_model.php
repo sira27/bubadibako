@@ -1,6 +1,15 @@
 <?php  
 class Training_model extends CI_Model {
 
+	public function get($id = null)
+    {
+        $this->db->from('training');
+        if ($id != null)
+            $this->db->where('id', $id);
+        $query = $this->db->get()->row();
+        return $query;
+    }
+
 	public function insert_data($nim, $nama_training, $sebagai, $tahun, $bukti_pendukung, $status, $tanggal_disetujui)
 	{
 		$data = array(
