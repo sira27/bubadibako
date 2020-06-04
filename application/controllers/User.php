@@ -136,9 +136,20 @@ class User extends CI_Controller {
 		$data['title'] = 'Create CV';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->load->view('templates/header', $data);
-    	$this->load->view('user/createCV', $data);
-    	$this->load->view('templates/footer');
+		$this->form_validation->set_rules('name', 'Nama Lengkap', 'required|trim');
+		$this->form_validation->set_rules('tempatLahir', 'Tempat Lahir', 'required|trim');
+		$this->form_validation->set_rules('tanggalLahir', 'Tanggal Lahir', 'required|trim');
+		$this->form_validation->set_rules('agama', 'Agama', 'required|trim');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('templates/header', $data);
+    		$this->load->view('user/createCV', $data);
+    		$this->load->view('templates/footer');
+    	}else{
+    		$this->add_create_cv_student(); // call function add
+		}
 
 	}
 
@@ -146,7 +157,7 @@ class User extends CI_Controller {
 	{
 		$this->load->model('Student_model');
 
-		$form = array(
+    	$form = array(
 			'nim'=>$this->input->post('nim'),
 			'email'=>$this->input->post('email'),
 			'name'=>$this->input->post('name'),
@@ -157,19 +168,19 @@ class User extends CI_Controller {
 			'deskripsi_diri'=>$this->input->post('deskripsi'),
 			'foto' => $this->session->userdata('image'),
 			'status' => 0
-			);
+		);
 
 		$this->Student_model->insert_entry($form['nim'], $form['name'], $form['tempat_lahir'], $form['tanggal_lahir'],	$form['agama'], $form['status'], $form['alamat'], $form['email'], $form['deskripsi_diri'], $form['foto']);
 
-		
+	
 		$this->session->set_flashdata('message', '<div class ="alert alert-success" role="alert">
-					Insert data success! Select others category if you want to add more data.</div>');
+				Insert data success! Select others category if you want to add more data.</div>');
 		redirect('user/createCV');
 	}
 
 	public function add_create_cv_achievement() 
 	{
-		$this->load->model('Achievement_model');
+		$nim_mahasiswa = $this->load->model('Achievement_model');
 
 		$add = array(
 			'nim' => $this->session->userdata('nim'),
@@ -330,6 +341,16 @@ class User extends CI_Controller {
 		$this->session->set_flashdata('message', '<div class ="alert alert-success" role="alert">
 					Insert data success! Select others category if you want to add more data.</div>');
 		redirect('user/createCV');
+	}
+
+	public function view_all_form()
+	{
+		$data['title'] = 'View All Form';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->load->view('templates/header', $data);
+    	$this->load->view('user/view_all_form', $data);
+    	$this->load->view('templates/footer');
 	}
 
 

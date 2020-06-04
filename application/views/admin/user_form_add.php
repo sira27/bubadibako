@@ -185,7 +185,7 @@
                     <div class="form-group row">
                         <label for="password" class="col-sm-3 col-form-label">Password</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" name="password">
+                            <input type="password" class="form-control" id="password" name="password">
                             <?=form_error('password');?>
                         </div>
                     </div>

@@ -149,86 +149,70 @@
 <div class="container-fluid">
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-4 text-gray-800">My CV</h1>
+  <h1 class="h3 mb-4 text-gray-800">View All Form</h1>
 
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">NIM</th>
-        <th scope="col">Name</th>
-        <th scope="col">Status</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td><?= $user['nim']; ?></td>
-        <td><?= $user['name']; ?></td>
-        <td>Pending</td>
-        <td>
-          <a href="<?=site_url('user/view_all_form')?>" class="btn btn-primary btn-flat mb-2"><i class="far fa-fw fa-eye"></i></i>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="card mb-4" style="width: 18rem;" >
+      <div class="card-header">
+        Personal Info
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <h5 class="card-title">NIM</h5>
+            <p class="card-text"><?= $user['nim']; ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Email</h5>
+            <p class="card-text"><?= $user['email']; ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Nama Lengkap</h5>
+            <p class="card-text"><?= $user['name']; ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Tempat Lahir</h5>
+            <p class="card-text"><?= $nim_mahasiswa->tempat_lahir; ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Tanggal Lahir</h5>
+            <p class="card-text"><?= date('d F Y', $nim_mahasiswa['tanggal_lahir']) ?></p>
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Agama</h5>
+            <p class="card-text"><?= $nim_mahasiswa['agama']; ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Alamat</h5>
+            <p class="card-text"><?= $nim_mahasiswa['alamat']; ?></p> 
+        </li>
+        <li class="list-group-item">
+            <h5 class="card-title">Deskripsi Diri</h5>
+            <p class="card-text"><?= $nim_mahasiswa['deskripsi_diri']; ?></p> 
+        </li>
+      </ul>
+    </div>
 
-  <div class="modal fade bd-example-modal-lg" id="edit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Edit Your CV!</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group row">
-              <label for="email" class="col-sm-2 col-form-label">Email</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>" readonly>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="name" class="col-sm-2 col-form-label">Full Name</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>">
-                <?= form_error('name', '<small class="text-danger pl-3">', '</small>');  ?>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="description" class="col-sm-2 col-form-label">Description</label>
-              <div class="col-sm-10">
-                <textarea type="text" class="form-control" id="description" name="description"></textarea>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-2">Picture</div>
-              <div class="col-sm-10">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <img src="<?= base_url('assets/img/profile/').$user['image']; ?>" class="img-thumbnail">
-                  </div>
-                  <div class="col-sm-9">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="image" name="image">
-                      <label class="custom-file-label" for="image">Choose file</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Edit CV</button>
-            </div>
-          </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Achievement</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Certification</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 </div>
 <!-- /.container-fluid -->

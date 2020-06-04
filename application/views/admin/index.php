@@ -160,11 +160,11 @@
           <thead>
             <tr>
               <th>No.</th>
-              <th>Nomor Induk</th>
-              <th>Nama</th>
+              <th>ID</th>
+              <th>Name</th>
               <th>Email</th>
               <th>Role</th>
-              <th>Is Active</th>
+              <th>Status</th>
               <th>Date Created</th>
               <th>Action</th>
             </tr>

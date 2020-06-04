@@ -3,6 +3,8 @@ class Student_model extends CI_Model {
 
         public function insert_entry($sa, $du, $ti, $em, $li, $sep, $en, $tu, $de, $se)
         {
+        	$builder = $db->table('nim_mahasiswa');
+			$query   = $builder->get();
         	$data = array(
 		        'nim'			=> $sa,
 				'nama'			=> $du,
@@ -16,5 +18,6 @@ class Student_model extends CI_Model {
 				'foto'			=> $se
 			);
             $this->db->insert('nim_mahasiswa', $data);
+
         }
 }

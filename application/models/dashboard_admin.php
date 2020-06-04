@@ -28,7 +28,7 @@ class dashboard_admin extends CI_model
         $params['name'] = $post['fullname'];
         $params['email'] = $post['email'];
         $params['image'] = 'default.jpg';
-        $params['password'] = sha1($post['password']);
+        $params['password'] = password_hash($post['password'], PASSWORD_DEFAULT);
         // $params['address'] = $post['address'] != "" ? $post['address'] : null;
         $params['role_id'] = $post['role'];
         $params['is_active'] = 1;
@@ -61,7 +61,7 @@ class dashboard_admin extends CI_model
         $params['name'] = $post['fullname'];
         $params['email'] = $post['email'];
         if (!empty($post['password'])) {
-            $params['password'] = sha1($post['password']);
+            $params['password'] = password_hash($post['password'], PASSWORD_DEFAULT);
         }
         // $params['address'] = $post['address'] != "" ? $post['address'] : null;
         $params['role_id'] = $post['role'];

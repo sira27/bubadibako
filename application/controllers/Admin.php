@@ -181,9 +181,7 @@ class Admin extends CI_Controller {
 		$data['title'] = 'Edit User';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$this->form_validation->set_rules('induk', 'ID', 'required|trim|min_length[10]|max_length[10]|is_unique[user.nim]', [
-				'is_unique' => 'This ID has been registered!'
-		]);
+		$this->form_validation->set_rules('induk', 'ID', 'required|trim|min_length[10]|max_length[10]');
 		$this->form_validation->set_rules('fullname', 'Name', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required|callback_email_check');
 		if ($this->input->post('password')) {
