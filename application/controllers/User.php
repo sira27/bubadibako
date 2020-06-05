@@ -222,7 +222,7 @@ class User extends CI_Controller {
 						unlink(FCPATH.'assets/img/CV'.$old_image);
 					}
 					$new_image = $this->upload->data('file_name');
-					$this->db->set('image', $new_image);
+					$this->db->set('bukti_pendukung', $new_image);
 				}else{
 					echo $this->upload->display_errors();
 				}
@@ -382,7 +382,6 @@ class User extends CI_Controller {
 		$data['title'] = 'View All Form';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-
 		$data['x'] = $this->Student_model->get();
 		$data['a'] = $this->Achievement_model->get();
 		$data['b'] = $this->Certification_model->get();
@@ -395,7 +394,11 @@ class User extends CI_Controller {
 		$this->load->view('templates/header', $data);
     	$this->load->view('user/view_all_form', $data);
     	$this->load->view('templates/footer');
-	}
+    	
+    }
+
+	
+
 
 
 

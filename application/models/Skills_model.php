@@ -1,11 +1,11 @@
 <?php  
 class Skills_model extends CI_Model {
 
-	public function get($id = null)
+	public function get($nim = null)
     {
         $this->db->from('skill');
-        if ($id != null)
-            $this->db->where('id', $id);
+        if ($nim != null)
+            $this->db->where('nim', $nim);
         $query = $this->db->get()->row();
         return $query;
     }

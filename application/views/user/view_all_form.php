@@ -155,6 +155,8 @@
     <div class="card mb-4" style="width: 10rem;" >
       <div class="card-header text-white bg-info">
         Student Info
+        <a href="<?=site_url('user/view_all_form')?>" class="btn btn-info btn-flat">
+        <i class="fas fa-fw fa-pen-square"></i></a>       
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -167,7 +169,7 @@
         </li>
         <li class="list-group-item">
             <h5 class="card-title">Nama Lengkap</h5>
-            <p class="card-text"><?= $x->nama; ?></p> 
+            <p class="card-text"><?= $user['name']; ?></p> 
         </li>
         <li class="list-group-item">
             <h5 class="card-title">Tempat Lahir</h5>
@@ -195,6 +197,8 @@
     <div class="card mb-4" style="width: 18rem;" >
       <div class="card-header text-white bg-info">
         Achievement
+        <a href="<?=site_url('user/view_all_form')?>" class="btn btn-info btn-flat">
+        <i class="fas fa-fw fa-pen-square"></i></a>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -215,6 +219,8 @@
     <div class="card mb-4" style="width: 18rem;" >
       <div class="card-header text-white bg-info">
         Certification
+        <a href="<?=site_url('user/view_all_form')?>" class="btn btn-info btn-flat">
+        <i class="fas fa-fw fa-pen-square"></i></a>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -235,6 +241,8 @@
     <div class="card mb-4" style="width: 18rem;" >
       <div class="card-header text-white bg-info">
         Education
+        <a href="<?=site_url('user/view_all_form')?>" class="btn btn-info btn-flat">
+        <i class="fas fa-fw fa-pen-square"></i></a>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -269,6 +277,8 @@
     <div class="card mb-4" style="width: 18rem;" >
       <div class="card-header text-white bg-info">
         Internship
+        <a href="<?=site_url('user/view_all_form')?>" class="btn btn-info btn-flat">
+        <i class="fas fa-fw fa-pen-square"></i></a>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -293,6 +303,8 @@
     <div class="card mb-4" style="width: 18rem;" >
       <div class="card-header text-white bg-info">
         Organizational
+        <a href="<?=site_url('user/view_all_form')?>" class="btn btn-info btn-flat">
+        <i class="fas fa-fw fa-pen-square"></i></a>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -317,6 +329,8 @@
     <div class="card mb-4" style="width: 18rem;" >
       <div class="card-header text-white bg-info">
         Skills
+        <a href="<?=site_url('user/view_all_form')?>" class="btn btn-info btn-flat">
+        <i class="fas fa-fw fa-pen-square"></i></a>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -333,6 +347,8 @@
     <div class="card mb-4" style="width: 18rem;" >
       <div class="card-header text-white bg-info">
         Training
+        <a href="<?=site_url('user/view_all_form')?>" class="btn btn-info btn-flat">
+        <i class="fas fa-fw fa-pen-square"></i></a>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -349,6 +365,9 @@
         </li>
         </ul>
     </div>
+  </div>
+
+  <a href="<?=site_url('user/myCV')?>" class="btn btn-primary btn-flat mb-2">Back to My CV</a>
 
 
 

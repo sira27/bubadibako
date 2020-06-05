@@ -151,6 +151,12 @@
   <!-- Page Heading -->
   <h1 class="h3 mb-4 text-gray-800">My CV</h1>
 
+  <div class="row">
+    <div class="col-lg-12">
+      <?= $this->session->flashdata('message');  ?>
+    </div>
+  </div>
+
 <table class="table table-hover">
     <thead>
       <tr>
@@ -168,7 +174,7 @@
         <td><?= $user['name']; ?></td>
         <td>Pending</td>
         <td>
-          <a href="<?=site_url('user/view_all_form')?>" class="btn btn-primary btn-flat mb-2"><i class="far fa-fw fa-eye"></i></i>
+          <a href="<?=site_url('user/view_all_form')?>" class="btn btn-primary btn-flat mb-2"><i class="far fa-fw fa-eye"></i>
         </td>
       </tr>
     </tbody>
